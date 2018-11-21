@@ -1,4 +1,7 @@
 <?php
+
+namespace Bookstore\Domain;
+
 class Book {
   //properties means variable
   public $isbn;
