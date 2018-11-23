@@ -1,13 +1,15 @@
 <?php
 
 namespace Bookstore\Domain;
+use Bookstore\Utils\Unique;
 
 class Person {
-  private static $lastId = 0;
-  private $id;
+
+  use Unique;
+
   private $email;
   protected $firstnameee;
-  protected $surnameggg;
+  protected $surname;
 
 
   public function __construct($id ,$firstname, $surname, $email){
@@ -15,22 +17,10 @@ class Person {
 
     // parent::__construct($firstname, $surname);
 
-    if ($id == null){
-      $this->id = ++self::$lastId;
-    }else {
-      $this->id = $id;
-      if ($id > self::$lastId){
-        self::$lastId = $id;
-      }
-    }
-
+    $this->setId($id);
     $this->firstname = $firstname;
     $this->surname = $surname;
     $this->email = $email;
-  }
-
-  public static function getLastId(){
-    return self::$lastId;
   }
 
   // getters
